@@ -3,12 +3,9 @@ import { getServerSession } from 'next-auth';
 import { signIn, useSession } from 'next-auth/react';
 import { Inter } from 'next/font/google';
 import { authOptions } from './api/auth/[...nextauth]';
-// import Layout from '@/components/Layout';
 import Head from 'next/head';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-// import Toast from '@/components/Toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,20 +14,18 @@ export const getServerSideProps: GetServerSideProps = async (
 ) => {
   const session = await getServerSession(context.req, context.res, authOptions);
 
-  console.log(session);
-
   if (session) {
     return {
       redirect: {
         permanent: false,
-        destination: 'http://localhost:3000',
+        destination: '/',
       },
     };
   }
 
   return {
     props: {
-      some: 'hoyeah',
+      some: '',
     },
   };
 };
@@ -39,18 +34,12 @@ function Login() {
   const session = useSession();
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(session);
-    console.log(router);
-  });
-
   return (
     <>
       <Head>
         <title>Login | Bookie</title>
       </Head>
-      {/* <Layout> */}
-      <nav className={`border-gray-200 bg-gray-300`}>
+      <nav className={`border-gray-200 bg-gray-200`}>
         <div className="relative max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-8 py-6 ">
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-stretch">
@@ -73,20 +62,39 @@ function Login() {
                 />
               </svg>
             </Link>
-            {/* <div className="border-r h-12 border-r-gray-800/75"></div> */}
           </div>
         </div>
       </nav>
       <section className={`${inter.className} py-20`}>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
           <div className="w-full md:mt-0 sm:max-w-md xl:p-0  overflow-hidden">
-            {/* {router.query.error === 'OAuthAccountNotLinked' && (
-                <Toast>
-                  Email with that account has been linked. Try another
-                </Toast>
-              )} */}
+            {router.query.error === 'OAuthAccountNotLinked' && (
+              <div
+                id="toast-danger"
+                className={`${inter.className} flex items-center w-full max-w-lg p-4 rounded-lg shadow text-red-400 border-2 border-red-700/75 bg-red-700/20`}
+                role="alert"
+              >
+                <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span className="sr-only">Error icon</span>
+                </div>
+                <div className="ml-3 text-sm font-normal">{props.children}</div>
+              </div>
+            )}
             <div className="p-6 space-y-2 mt-8 md:space-y-6 sm:p-8 border border-gray-800/30 rounded-lg">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-800 md:text-2xl">
                 Sign in to your account
               </h1>
 
@@ -171,7 +179,6 @@ function Login() {
           </div>
         </div>
       </section>
-      {/* </Layout> */}
     </>
   );
 }
