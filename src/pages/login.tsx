@@ -90,7 +90,9 @@ function Login() {
                   </svg>
                   <span className="sr-only">Error icon</span>
                 </div>
-                <div className="ml-3 text-sm font-normal">{props.children}</div>
+                <div className="ml-3 text-sm font-normal">
+                  Email with that account has been used. Try another
+                </div>
               </div>
             )}
             <div className="p-6 space-y-2 mt-8 md:space-y-6 sm:p-8 border border-gray-800/30 rounded-lg">
@@ -171,7 +173,7 @@ function Login() {
 
               <div className="px-8">
                 <p className="text-center text-xs text-gray-400 leading-normal">
-                  By signing-in, you agree to {`Qontax's`}{' '}
+                  By signing-in, you agree to {`Bookie's`}{' '}
                   <strong>Terms and Conditions of use</strong>
                 </p>
               </div>
