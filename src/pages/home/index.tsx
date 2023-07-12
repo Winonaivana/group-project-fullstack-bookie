@@ -4,7 +4,9 @@ const Page = () => {
   return (
     <>
       <NavBar />
-      <p>test</p>
+      <main className="container flex justify-center ">
+        <p>test</p>
+      </main>
     </>
   );
 };

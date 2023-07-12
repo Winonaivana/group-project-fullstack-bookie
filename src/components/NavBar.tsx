@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import SearchBar from './SearchBar';
 
 const NavBar = () => {
   return (
@@ -14,19 +15,7 @@ const NavBar = () => {
             className=""
           />
         </Link>
-        <div className="relative">
-          <input
-            placeholder="Search"
-            className="py-3 pr-3 pl-11 rounded-3xl w-80 placeholder:text-[#4B5563]"
-          />
-          <Image
-            src="/assets/icon/search-icon.svg"
-            width={20}
-            height={20}
-            alt="search icon"
-            className="absolute top-[14px] left-3"
-          />
-        </div>
+        <SearchBar />
         <button className="font-semibold text-[#f1f1f1] rounded-lg bg-[#10b891] py-3 px-6">
           Sign out
         </button>
