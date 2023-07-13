@@ -1,6 +1,10 @@
 import Image from 'next/image';
+import { IFeed } from '@/pages/home';
 
-const SearchBar = () => {
+interface ISearchProps {
+  data: IFeed[];
+}
+const SearchBar = ({ data }: ISearchProps) => {
   return (
     <div className="relative">
       <input

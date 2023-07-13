@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
+import { IFeed } from '@/pages/home';
 
-const NavBar = () => {
+interface IProps {
+  data: IFeed[];
+}
+
+const NavBar = ({ data }: IProps) => {
   return (
     <header className="h-[100px] bg-[#E5E7EB] flex justify-center">
       <div className="container flex flex-row items-center justify-between h-full">
@@ -15,7 +20,7 @@ const NavBar = () => {
             className=""
           />
         </Link>
-        <SearchBar />
+        <SearchBar data={data} />
         <button className="font-semibold text-[#f1f1f1] rounded-lg bg-[#10b891] py-3 px-6">
           Sign out
         </button>
