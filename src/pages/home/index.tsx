@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // dev purpose only import
 import { getLocalData } from '@/libs/localdata';
 //
@@ -60,16 +59,6 @@ const Page = ({ feed }: IHomeProps) => {
             );
           })}
         </div>
-=======
-import NavBar from '@/components/NavBar';
-
-const Page = () => {
-  return (
-    <>
-      <NavBar />
-      <main className="container flex justify-center ">
-        <p>test</p>
->>>>>>> 6276cc8701adef86f55819830448a17143d8909c
       </main>
     </>
   );

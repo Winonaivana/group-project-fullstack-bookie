@@ -1,5 +1,4 @@
 import Image from 'next/image';
-<<<<<<< HEAD
 import { IFeed } from '@/pages/home';
 import { useState } from 'react';
 
@@ -32,15 +31,10 @@ const SearchBar = ({ data }: ISearchProps) => {
     console.log('tesuea');
   };
 
-=======
-
-const SearchBar = () => {
->>>>>>> 6276cc8701adef86f55819830448a17143d8909c
   return (
     <div className="relative">
       <input
         placeholder="Search"
-<<<<<<< HEAD
         value={wordInput}
         onChange={handleFilter}
         className="py-3 pr-3 pl-11 rounded-3xl w-80 placeholder:text-[#4B5563]"
@@ -50,9 +44,6 @@ const SearchBar = () => {
         onBlur={() => {
           setShowResult(false);
         }}
-=======
-        className="py-3 pr-3 pl-11 rounded-3xl w-80 placeholder:text-[#4B5563]"
->>>>>>> 6276cc8701adef86f55819830448a17143d8909c
       />
       <Image
         src="/assets/icon/search-icon.svg"
@@ -61,7 +52,6 @@ const SearchBar = () => {
         alt="search icon"
         className="absolute top-[14px] left-3"
       />
-<<<<<<< HEAD
 
       {filteredData.length != 0 && (
         <button onClick={clearInput} className="absolute top-[14px] right-5">
@@ -87,8 +77,6 @@ const SearchBar = () => {
           </div>
         </>
       )}
-=======
->>>>>>> 6276cc8701adef86f55819830448a17143d8909c
     </div>
   );
 };
