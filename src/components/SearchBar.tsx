@@ -70,7 +70,7 @@ const SearchBar = ({ data }: ISearchProps) => {
                   key={key}
                   className="p-3 bg-white border searchResultCard hover:bg-[#10b891]/20 hover:text-[#10b891]"
                 >
-                  <Link href={`/book/${value.id}`} className="">
+                  <Link href={`/books/${value.id}`} className="">
                     <p className="">
                       {value.title}
                       <small> by {value.writer}</small>
