@@ -18,8 +18,6 @@ const SearchBar = ({ data }: ISearchProps) => {
         .toLowerCase()
         .includes(searchWord.toLowerCase());
     });
-
-    console.log(newFilter, 'newFilter');
     if (searchWord === '') {
       setFilteredData([]);
     } else {
@@ -30,6 +28,7 @@ const SearchBar = ({ data }: ISearchProps) => {
   const clearInput = () => {
     setFilteredData([]);
     setWordInput('');
+    console.log('tesuea');
   };
 
   return (
@@ -53,21 +52,30 @@ const SearchBar = ({ data }: ISearchProps) => {
         alt="search icon"
         className="absolute top-[14px] left-3"
       />
+
+      {filteredData.length != 0 && (
+        <button onClick={clearInput} className="absolute top-[14px] right-5">
+          X
+        </button>
+      )}
+
       {filteredData.length != 0 && showResult && (
-        <div className="absolute searchResult top-[0px] rounded-3xl w-full mt-[48px] bg-white overflow-hidden ">
-          {filteredData.slice(0, 5).map((value, key) => {
-            return (
-              <div key={key} className="p-3 bg-white border searchResultCard">
-                <a>
-                  <p>
-                    {value.title}
-                    <small>{value.writer}</small>
-                  </p>
-                </a>
-              </div>
-            );
-          })}
-        </div>
+        <>
+          <div className="absolute searchResult top-[0px] rounded-3xl w-full mt-[48px] bg-white overflow-hidden ">
+            {filteredData.slice(0, 5).map((value, key) => {
+              return (
+                <div key={key} className="p-3 bg-white border searchResultCard">
+                  <a>
+                    <p>
+                      {value.title}
+                      <small>{value.writer}</small>
+                    </p>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );
