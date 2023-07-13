@@ -1,5 +1,6 @@
 import { IFeed } from '@/pages/home';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface IBookCardProps {
   data: IFeed;
@@ -7,13 +8,16 @@ interface IBookCardProps {
 
 const BookCard = ({ data }: IBookCardProps) => {
   return (
-    <div className="book-card-wrapper max-w-[250px]">
+    <Link
+      href={`/books/${data.id}`}
+      className="book-card-wrapper max-w-[250px] rounded-md hover:bg-[#10B981]/20 "
+    >
       <Image
         src={'/assets/images/dummy-book-cover.png'}
         width={190}
         height={250}
         alt=""
-        className="rounded-md"
+        className="w-full h-auto rounded-md"
       />
       <h2 className="mt-4 text-2xl font-semibold">{data.title}</h2>
       <div className="flex mt-4 author-wrapper">
@@ -49,7 +53,7 @@ const BookCard = ({ data }: IBookCardProps) => {
           <p className="text-[#0284C7]">In Progress</p>
         </div>
       )}
-    </div>
+    </Link>
   );
 };
 export default BookCard;
