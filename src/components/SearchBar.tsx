@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { IFeed } from '@/pages/home';
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface ISearchProps {
   data: IFeed[];
@@ -14,7 +15,7 @@ const SearchBar = ({ data }: ISearchProps) => {
     const searchWord = e.target.value;
     setWordInput(searchWord);
     const newFilter = data.filter((value) => {
-      return (value.title + value.writer) //can add the possible search value here
+      return (value.title + value.writer + value.genres) //can add the possible search value here
         .toLowerCase()
         .includes(searchWord.toLowerCase());
     });
@@ -28,11 +29,15 @@ const SearchBar = ({ data }: ISearchProps) => {
   const clearInput = () => {
     setFilteredData([]);
     setWordInput('');
-    console.log('tesuea');
   };
 
   return (
-    <div className="relative">
+    <div
+      className="relative "
+      // onBlur={() => {
+      //   setShowResult(false);
+      // }}
+    >
       <input
         placeholder="Search"
         value={wordInput}
@@ -40,9 +45,6 @@ const SearchBar = ({ data }: ISearchProps) => {
         className="py-3 pr-3 pl-11 rounded-3xl w-80 placeholder:text-[#4B5563]"
         onFocus={() => {
           setShowResult(true);
-        }}
-        onBlur={() => {
-          setShowResult(false);
         }}
       />
       <Image
@@ -64,13 +66,16 @@ const SearchBar = ({ data }: ISearchProps) => {
           <div className="absolute searchResult top-[0px] rounded-3xl w-full mt-[48px] bg-white overflow-hidden ">
             {filteredData.slice(0, 5).map((value, key) => {
               return (
-                <div key={key} className="p-3 bg-white border searchResultCard">
-                  <a>
-                    <p>
+                <div
+                  key={key}
+                  className="p-3 bg-white border searchResultCard hover:bg-[#10b891]/20 hover:text-[#10b891]"
+                >
+                  <Link href={`/book/${value.id}`} className="">
+                    <p className="">
                       {value.title}
-                      <small>{value.writer}</small>
+                      <small> by {value.writer}</small>
                     </p>
-                  </a>
+                  </Link>
                 </div>
               );
             })}
