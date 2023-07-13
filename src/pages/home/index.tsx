@@ -5,9 +5,10 @@ import NavBar from '@/components/NavBar';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import BookCard from '@/components/BookCard';
+import { prisma } from '@/libs/db';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = await getLocalData();
+  const feed = await prisma.book.findMany();
   return {
     props: { feed },
   };
@@ -17,7 +18,11 @@ export interface IFeed {
   id: string;
   title: string;
   writer: string;
+  genres: string;
+  coverImgUrl: string;
+  notes: string;
   done: boolean;
+  userId: string;
 }
 
 interface IHomeProps {
@@ -52,7 +57,7 @@ const Page = ({ feed }: IHomeProps) => {
         </div>
         <div className="container grid justify-center grid-cols-5 gap-11 px-14 row-2-wrapper mt-11">
           {feed.map((book) => {
-            return <BookCard key={book.id} />;
+            return <BookCard key={book.id} data={book} />;
           })}
         </div>
       </main>
