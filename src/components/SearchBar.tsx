@@ -55,7 +55,7 @@ const SearchBar = ({ data }: ISearchProps) => {
       />
       {filteredData.length != 0 && showResult && (
         <div className="absolute searchResult top-[0px] rounded-3xl w-full mt-[48px] bg-white overflow-hidden ">
-          {filteredData.slice(0, 10).map((value, key) => {
+          {filteredData.slice(0, 5).map((value, key) => {
             return (
               <div key={key} className="p-3 bg-white border searchResultCard">
                 <a>
