@@ -4,7 +4,7 @@ import { getLocalData } from '@/libs/localdata';
 import NavBar from '@/components/NavBar';
 import { GetServerSideProps } from 'next';
 
-const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await getLocalData();
   return {
     props: { feed },
@@ -23,11 +23,19 @@ interface IHomeProps {
 }
 
 const Page = ({ feed }: IHomeProps) => {
+  console.log(feed, 'IHomeProps');
   return (
     <>
       <NavBar data={feed} />
       <main className="container flex justify-center ">
-        <p>test</p>
+        {feed.map((book) => {
+          return (
+            <div key={book.id} className="flex flex-col m-3 border-4">
+              <h1>{book.title}</h1>
+              <h2>{book.writer}</h2>
+            </div>
+          );
+        })}
       </main>
     </>
   );
