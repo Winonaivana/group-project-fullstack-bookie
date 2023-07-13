@@ -4,6 +4,7 @@ import { getLocalData } from '@/libs/localdata';
 import NavBar from '@/components/NavBar';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
+import BookCard from '@/components/BookCard';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await getLocalData();
@@ -49,14 +50,9 @@ const Page = ({ feed }: IHomeProps) => {
             + Add New Book
           </button>
         </div>
-        <div className="grid grid-cols-5 row-2-wrapper">
+        <div className="container grid justify-center grid-cols-5 gap-11 px-14 row-2-wrapper mt-11">
           {feed.map((book) => {
-            return (
-              <div key={book.id} className="flex flex-col m-3 border-4">
-                <h1>{book.title}</h1>
-                <h2>{book.writer}</h2>
-              </div>
-            );
+            return <BookCard key={book.id} />;
           })}
         </div>
       </main>
