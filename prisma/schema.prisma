@@ -59,13 +59,13 @@ model VerificationToken {
 }
 
 model Book {
-  id          String @id @default(cuid())
+  id          String  @id @default(cuid())
   title       String
   writer      String
   genres      String
-  coverImgUrl String @unique
-  done        String
+  coverImgUrl String  @unique
+  done        Boolean
   notes       String
   userId      String
-  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
