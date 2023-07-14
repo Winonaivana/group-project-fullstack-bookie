@@ -1,12 +1,21 @@
+import NavBar from '@/components/NavBar';
 import { Form } from 'react-hook-form';
+import { IFeed } from '../home';
 
-const Page = () => {
-  return (
-    <>
-      <main>
-        <p>Hellow, See Yu Tumuruw</p>
-      </main>
-    </>
-  );
+export interface IFormInput {
+  title: string;
+  writer: string;
+  genres: boolean;
+  coverImgUrl: string;
+  notes: string;
+  userId: string;
+}
+
+interface INewContactPageProps {
+  feed: IFeed[];
+}
+
+const NewContactPage = ({ feed }: INewContactPageProps) => {
+  return <NavBar data={feed} />;
 };
-export default Page;
+export default NewContactPage;

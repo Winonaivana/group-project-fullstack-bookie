@@ -10,7 +10,7 @@ const BookCard = ({ data }: IBookCardProps) => {
   return (
     <Link
       href={`/books/${data.id}`}
-      className="book-card-wrapper max-w-[250px] rounded-md hover:bg-[#10B981]/20 "
+      className="book-card-wrapper max-w-[250px] rounded-md hover:bg-emerald-500/20 "
     >
       <Image
         src={'/assets/images/dummy-book-cover.png'}
@@ -31,7 +31,7 @@ const BookCard = ({ data }: IBookCardProps) => {
         <p>{data.writer}</p>
       </div>
       {data.done ? (
-        <div className="flex px-4 py-2 bg-[#10B981]/20 max-w-fit rounded-md mt-4">
+        <div className="flex px-4 py-2 mt-4 rounded-md bg-emerald-500/20 max-w-fit">
           <Image
             src="/assets/icon/done-icon.svg"
             width={14}
@@ -39,10 +39,10 @@ const BookCard = ({ data }: IBookCardProps) => {
             alt="done icon"
             className="mr-2"
           />
-          <p className="text-[#10B981]">Done</p>
+          <p className="text-emerald-500">Done</p>
         </div>
       ) : (
-        <div className="flex px-4 py-2 bg-[#0284C7]/20 max-w-fit rounded-md mt-4">
+        <div className="flex px-4 py-2 mt-4 rounded-md bg-sky-600/20 max-w-fit">
           <Image
             src="/assets/icon/in-progress-icon.svg"
             width={14}
@@ -50,7 +50,7 @@ const BookCard = ({ data }: IBookCardProps) => {
             alt="done icon"
             className="mr-2"
           />
-          <p className="text-[#0284C7]">In Progress</p>
+          <p className="text-sky-600">In Progress</p>
         </div>
       )}
     </Link>

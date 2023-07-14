@@ -10,7 +10,7 @@ interface IProps {
 const NavBar = ({ data }: IProps) => {
   console.log(data, 'IProps');
   return (
-    <header className="h-[100px] bg-[#E5E7EB] flex justify-center">
+    <header className="h-[100px] bg-gray-200 flex justify-center">
       <div className="container flex flex-row items-center justify-between h-full">
         <Link href="/">
           <Image
@@ -22,7 +22,7 @@ const NavBar = ({ data }: IProps) => {
           />
         </Link>
         <SearchBar data={data} />
-        <button className="font-semibold text-[#f1f1f1] rounded-lg bg-[#10b891] py-3 px-6">
+        <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6">
           Sign out
         </button>
       </div>
