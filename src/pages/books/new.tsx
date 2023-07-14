@@ -11,11 +11,11 @@ export interface IFormInput {
   userId: string;
 }
 
-interface INewContactPageProps {
+interface INewBookPageProps {
   feed: IFeed[];
 }
 
-const NewContactPage = ({ feed }: INewContactPageProps) => {
+const NewContactPage = ({ feed }: INewBookPageProps) => {
   return <NavBar data={feed} />;
 };
 export default NewContactPage;
