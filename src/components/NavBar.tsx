@@ -8,7 +8,6 @@ interface IProps {
 }
 
 const NavBar = ({ data }: IProps) => {
-  console.log(data, 'IProps');
   return (
     <header className="h-[100px] bg-gray-200 flex justify-center">
       <div className="container flex flex-row items-center justify-between h-full">
