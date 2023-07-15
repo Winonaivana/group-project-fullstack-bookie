@@ -27,7 +27,6 @@ interface IHomeProps {
 }
 
 const Page = ({ feed }: IHomeProps) => {
-  console.log(feed, 'IHomeProps');
   return (
     <>
       <NavBar data={feed} />
