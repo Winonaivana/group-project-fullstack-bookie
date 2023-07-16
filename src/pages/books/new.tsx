@@ -6,7 +6,6 @@ import BookForm from '@/components/BookForm';
 import * as yup from 'yup';
 import axios from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await prisma.book.findMany();
@@ -55,9 +54,7 @@ const NewBookPage = ({ feed, post }: INewBookPageProps) => {
     register,
     handleSubmit,
     formState: { errors },
-
-    //this bug learn from https://github.com/DefinitelyTyped/DefinitelyTyped/issues/29412 for implementation
-  } = useForm<IFormInput>({ resolver: yupResolver(schema), mode: 'onTouched' });
+  } = useForm<IFormInput>({ mode: 'onTouched' });
 
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
     try {
