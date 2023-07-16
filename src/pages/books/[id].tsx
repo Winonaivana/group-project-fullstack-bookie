@@ -1,4 +1,3 @@
-import BookCard from '@/components/BookCard';
 import { prisma } from '@/libs/db';
 import { Book } from '@prisma/client';
 import { GetServerSideProps } from 'next';
@@ -16,17 +15,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-export interface Feed {
-  id: string;
-  title: string;
-  writer: string;
-  genres: string;
-  coverImgUrl: string;
-  notes: string;
-  done: boolean;
-  userId: string;
-}
-
 interface BookProp {
   data: Book;
 }
@@ -34,7 +22,7 @@ interface BookProp {
 const Book = ({ data }: BookProp) => {
   return (
     <>
-      <div>{data.title}</div>
+      <div>hello</div>
     </>
   );
 };
