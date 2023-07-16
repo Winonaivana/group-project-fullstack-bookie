@@ -1,13 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
-import { Book } from '@prisma/client';
 
-interface IProps {
-  data: Book;
-}
-
-const NavBar = ({ data }: IProps) => {
+const NavBar = () => {
   return (
     <header className="h-[100px] bg-gray-200 flex justify-center">
       <div className="container flex flex-row items-center justify-between h-full">

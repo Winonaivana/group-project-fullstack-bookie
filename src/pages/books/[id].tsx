@@ -1,3 +1,4 @@
+import NavBar from '@/components/NavBar';
 import { prisma } from '@/libs/db';
 import { Book } from '@prisma/client';
 import { GetServerSideProps } from 'next';
@@ -22,7 +23,7 @@ interface BookProp {
 const Book = ({ data }: BookProp) => {
   return (
     <>
-      <div>hello</div>
+      <NavBar></NavBar>
     </>
   );
 };
