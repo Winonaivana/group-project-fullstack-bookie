@@ -23,16 +23,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const schema = yup.object({
-  title: yup.string().required('Please fill in the book title'),
-  writer: yup.string().required('Please fill in the writter'),
-  genres: yup.string().required('Please specified the genre'),
-  coverImgUrl: yup.string().required('Please find an image for the cover'),
-  done: yup.boolean(),
-  notes: yup
-    .string()
-    .required('Please tell us about your first impression about this book'),
-});
+// const schema = yup.object({
+//   title: yup.string().required('Please fill in the book title'),
+//   writer: yup.string().required('Please fill in the writter'),
+//   genres: yup.string().required('Please specified the genre'),
+//   coverImgUrl: yup.string().required('Please find an image for the cover'),
+//   done: yup.boolean(),
+//   notes: yup
+//     .string()
+//     .required('Please tell us about your first impression about this book'),
+// });
 
 export interface IFormInput {
   title: string;
