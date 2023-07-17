@@ -7,6 +7,7 @@ import { IFeed } from '@/pages/home';
 
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const books = await prisma.book.findMany();
@@ -51,7 +52,10 @@ const Book = ({ book, books }: BookProp) => {
                 <img src={book.coverImgUrl} alt=""></img>
               </div>
               <div className="flex gap-4 justify-center">
-                <EditButton></EditButton>
+                <Link href={`/books/${book.id}/edit`}>
+                  {' '}
+                  <EditButton></EditButton>
+                </Link>
                 <DeleteButton onDelete={handleDelete}></DeleteButton>
               </div>
             </div>
