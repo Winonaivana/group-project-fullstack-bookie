@@ -8,7 +8,7 @@ const NavBar = () => {
       <div className="container flex flex-row items-center justify-between h-full ml-16">
         <Link href="/">
           <Image
-            src="/assets/logo/bookie-logo.svg"
+            src="/assets/logo/bookie.svg"
             width={120}
             height={32}
             alt="bookie logo"
