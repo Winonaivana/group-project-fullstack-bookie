@@ -4,10 +4,12 @@ import NavBar from '@/components/NavBar';
 import { prisma } from '@/libs/db';
 
 import { IFeed } from '@/pages/home';
+import axios from 'axios';
 
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const books = await prisma.book.findMany();
@@ -31,7 +33,15 @@ interface BookProp {
 }
 
 const Book = ({ book, books }: BookProp) => {
-  const handleDelete = () => {};
+  const router = useRouter();
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`api/books/${book.id}`);
+      router.push('/');
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <NavBar data={books}></NavBar>
