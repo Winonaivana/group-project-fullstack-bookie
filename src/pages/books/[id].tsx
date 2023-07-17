@@ -1,6 +1,6 @@
 import DeleteButton from '@/components/DeleteButton';
 import EditButton from '@/components/EditButton';
-import NavBar from '@/components/NavBar';
+import NavBar from '@/components/NavBar1';
 import { prisma } from '@/libs/db';
 import { Book } from '@prisma/client';
 
@@ -25,6 +25,7 @@ interface BookProp {
 }
 
 const Book = ({ data }: BookProp) => {
+  const handleDelete = () => {};
   return (
     <>
       <NavBar></NavBar>
@@ -32,7 +33,7 @@ const Book = ({ data }: BookProp) => {
         <div>
           <div className="flex left-items-wrapper">
             <Image
-              src="/assets/icon/book-icon.svg"
+              src="/assets/icon/book.svg"
               width={32.5}
               height={27.5}
               alt="file basket icon"
@@ -43,7 +44,7 @@ const Book = ({ data }: BookProp) => {
             <div>
               <div className="min-w-[200px]">
                 <Image
-                  src={'/assets/images/dummy-book-cover.svg'}
+                  src={'/assets/images/book-cover.svg'}
                   width={200}
                   height={250}
                   alt=""
@@ -52,7 +53,7 @@ const Book = ({ data }: BookProp) => {
               </div>
               <div className="flex gap-4 justify-center">
                 <EditButton></EditButton>
-                <DeleteButton></DeleteButton>
+                <DeleteButton onDelete={handleDelete}></DeleteButton>
               </div>
             </div>
             <div>
@@ -62,7 +63,7 @@ const Book = ({ data }: BookProp) => {
               <div className="flex gap-5">
                 <div className="flex mt-4 author-wrapper">
                   <Image
-                    src="/assets/icon/writer-icon.svg"
+                    src="/assets/icon/writer.svg"
                     width={14}
                     height={14}
                     alt="author icon"
@@ -72,7 +73,7 @@ const Book = ({ data }: BookProp) => {
                 </div>
                 <div className="flex px-3 py-1 mt-4 rounded-md bg-sky-600/20 max-w-fit">
                   <Image
-                    src="/assets/icon/in-progress-icon.svg"
+                    src="/assets/icon/in-progress.svg"
                     width={14}
                     height={14}
                     alt="done icon"
