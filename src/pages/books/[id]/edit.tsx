@@ -10,7 +10,6 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { useEffect, useState } from 'react';
 import { prisma } from '@/libs/db';
 import { Book } from '@prisma/client';
-import BookForm from '@/components/BookForm';
 import NavBar from '@/components/NavBar';
 
 const inter = Inter({ subsets: ['latin'] });
