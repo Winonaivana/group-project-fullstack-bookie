@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (
   };
 };
 
-function NewContact({ feed, data }: { feed: Book[]; data: Book }) {
+function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
   const router = useRouter();
   const session = useSession();
   const [showError, setShowError] = useState(false);
@@ -176,7 +176,7 @@ function NewContact({ feed, data }: { feed: Book[]; data: Book }) {
                     type="text"
                     id="title"
                     className="border  text-sm rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 bg-white border-gray-700/20 placeholder-gray-400 text-gray-800 "
-                    placeholder="John"
+                    placeholder="Great Book"
                     {...register('title', { required: true })}
                   />
                 </div>
@@ -196,7 +196,7 @@ function NewContact({ feed, data }: { feed: Book[]; data: Book }) {
                   </div>
                   <input
                     type="text"
-                    id="genres"
+                    id="writer"
                     className="border  text-sm rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 bg-white border-gray-700/20 placeholder-gray-400 text-gray-800 "
                     placeholder="Daniel Kahneman"
                     {...register('writer', { required: true })}
@@ -264,7 +264,7 @@ function NewContact({ feed, data }: { feed: Book[]; data: Book }) {
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
                   <label
-                    htmlFor="checked-checkbox"
+                    htmlFor="doneReading"
                     className="ml-2 text-sm font-medium text-gray-800"
                   >
                     Done Reading
@@ -274,7 +274,7 @@ function NewContact({ feed, data }: { feed: Book[]; data: Book }) {
                 <div className="sm:col-span-2">
                   <div className="flex items-center justify-between mb-2">
                     <label
-                      htmlFor="Notes"
+                      htmlFor="notes"
                       className="block text-sm font-medium  text-gray-800"
                     >
                       Notes
@@ -329,4 +329,4 @@ function NewContact({ feed, data }: { feed: Book[]; data: Book }) {
   );
 }
 
-export default NewContact;
+export default NewBook;
