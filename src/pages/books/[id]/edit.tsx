@@ -45,6 +45,21 @@ export const getServerSideProps: GetServerSideProps = async (
     },
   });
 
+  if (!contact) {
+    return {
+      notFound: true,
+    };
+  }
+
+  if (session?.user.id !== contact?.userId) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+    };
+  }
+
   return {
     props: {
       feed,
