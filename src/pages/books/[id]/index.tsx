@@ -36,7 +36,7 @@ const Book = ({ book, books }: BookProp) => {
   const router = useRouter();
   const handleDelete = async () => {
     try {
-      await axios.delete(`api/books/${book.id}`);
+      await axios.delete(`/api/books/${book.id}`);
       router.push('/');
     } catch (err) {
       console.log(err);
