@@ -30,7 +30,7 @@ interface IHomeProps {
   feed: IFeed[];
 }
 
-const Page = ({ feed }: IHomeProps) => {
+const Home = ({ feed }: IHomeProps) => {
   return (
     <>
       <NavBar data={feed} />
@@ -62,4 +62,4 @@ const Page = ({ feed }: IHomeProps) => {
     </>
   );
 };
-export default Page;
+export default Home;
