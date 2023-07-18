@@ -38,12 +38,31 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const feed = await prisma.book.findMany();
+  const feed = await prisma.book.findMany({
+    where: {
+      userId: session.user.id,
+    },
+  });
   const contact = await prisma.book.findFirst({
     where: {
       id: context.params?.id as string,
     },
   });
+
+  if (!contact) {
+    return {
+      notFound: true,
+    };
+  }
+
+  if (session.user.id !== contact.userId) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+    };
+  }
 
   return {
     props: {
