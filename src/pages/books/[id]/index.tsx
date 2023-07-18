@@ -2,22 +2,59 @@ import DeleteButton from '@/components/DeleteButton';
 import EditButton from '@/components/EditButton';
 import NavBar from '@/components/NavBar';
 import { prisma } from '@/libs/db';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
 import { IFeed } from '@/pages/home';
 import axios from 'axios';
 
 import { GetServerSideProps } from 'next';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const books = await prisma.book.findMany();
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+  params,
+}) => {
+  const session = await getServerSession(req, res, authOptions);
+
+  if (!session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+    };
+  }
+
+  const books = await prisma.book.findMany({
+    where: {
+      userId: session.user.id,
+    },
+  });
   const book = await prisma.book.findUnique({
     where: {
       id: params?.id as string,
     },
   });
+
+  if (!book) {
+    return {
+      notFound: true,
+    };
+  }
+
+  if (session.user.id !== book.userId) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+    };
+  }
+
   return {
     props: {
       books,
