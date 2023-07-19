@@ -6,6 +6,7 @@ import BookCard from '@/components/BookCard';
 import { prisma } from '@/libs/db';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -69,9 +70,12 @@ const Home = ({ feed }: IHomeProps) => {
               {feed.filter((value) => value.done === false).length} In Progress
             </p>
           </div>
-          <button className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500">
+          <Link
+            href="/books/new"
+            className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500"
+          >
             + Add New Book
-          </button>
+          </Link>
         </div>
         <div className="container grid justify-center grid-cols-5 gap-11 px-14 row-2-wrapper mt-11">
           {feed.map((book) => {
