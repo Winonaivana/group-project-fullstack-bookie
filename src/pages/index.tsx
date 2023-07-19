@@ -54,30 +54,37 @@ const Home = ({ feed }: IHomeProps) => {
     <>
       <NavBar data={feed} />
       <main className="flex flex-col items-center">
-        <div className="container flex justify-between px-14 mt-14 row-1-wrapper">
-          <div className="flex left-items-wrapper">
-            <Image
-              src="/assets/icon/file-basket-icon.svg"
-              width={32.5}
-              height={27.5}
-              alt="file basket icon"
-            />
-            <h1 className="text-[32px] font-medium ml-3 ">My books</h1>
-            <p className="px-5 py-3 rounded-full ml-7 bg-gray-900/20">
-              {feed.filter((value) => value.done === true).length} Done
-            </p>
-            <p className="px-5 py-3 ml-3 rounded-full bg-gray-900/20">
-              {feed.filter((value) => value.done === false).length} In Progress
-            </p>
+        <div className="container flex justify-between px-14 mt-14 row-1-wrapper ph:px-6">
+          <div className="flex left-items-wrapper ph:flex-col">
+            <div className="flex items-center my-books-wrapper">
+              <Image
+                src="/assets/icon/file-basket-icon.svg"
+                width={32.5}
+                height={27.5}
+                alt="file basket icon"
+              />
+              <h1 className="text-[32px] font-medium ml-3 ph:text-2xl ">
+                My books
+              </h1>
+            </div>
+            <div className="flex items-center book-status-wrapper ph:mt-3">
+              <p className="px-5 py-3 rounded-full bg-gray-900/20 ml-7 ph:ml-0 ph:py-1 ph:text-xs">
+                {feed.filter((value) => value.done === true).length} Done
+              </p>
+              <p className="px-5 py-3 ml-3 rounded-full bg-gray-900/20 ph:py-1 ph:text-xs">
+                {feed.filter((value) => value.done === false).length} In
+                Progress
+              </p>
+            </div>
           </div>
           <Link
             href="/books/new"
-            className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500"
+            className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500 ph:h-[36px]  ph:py-1"
           >
-            + Add New Book
+            + Add
           </Link>
         </div>
-        <div className="container grid justify-center grid-cols-5 gap-11 px-14 row-2-wrapper mt-11">
+        <div className="container grid justify-center grid-cols-5 gap-11 px-14 row-2-wrapper mt-11 ph:grid-cols-1">
           {feed.map((book) => {
             return <BookCard key={book.id} data={book} />;
           })}
