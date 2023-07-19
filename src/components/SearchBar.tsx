@@ -37,7 +37,7 @@ const SearchBar = ({ data }: ISearchProps) => {
         placeholder="Search"
         value={wordInput}
         onChange={handleFilter}
-        className="py-3 pr-3 pl-11 rounded-3xl w-80 placeholder:text-[#4B5563]"
+        className="py-3 pr-3 pl-11 rounded-3xl w-80 placeholder:text-[#4B5563] focus:border-2 focus:border-sky-500"
         onFocus={() => {
           setShowResult(true);
         }}
