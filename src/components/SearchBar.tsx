@@ -32,12 +32,7 @@ const SearchBar = ({ data }: ISearchProps) => {
   };
 
   return (
-    <div
-      className="relative "
-      // onBlur={() => {
-      //   setShowResult(false);
-      // }}
-    >
+    <div className="relative ">
       <input
         placeholder="Search"
         value={wordInput}
