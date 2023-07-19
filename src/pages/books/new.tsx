@@ -9,6 +9,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext,
@@ -66,6 +67,7 @@ interface INewBookPageProps {
 
 const NewBookPage = ({ feed, post }: INewBookPageProps) => {
   const session = useSession();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -87,6 +89,7 @@ const NewBookPage = ({ feed, post }: INewBookPageProps) => {
           },
         },
       );
+      router.push('/');
     } catch (error: any) {
       console.log(error);
     }
