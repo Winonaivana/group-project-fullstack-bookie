@@ -12,12 +12,15 @@ const BookCard = ({ data }: IBookCardProps) => {
       href={`/books/${data.id}`}
       className="book-card-wrapper max-w-[250px] rounded-md hover:bg-emerald-500/20 "
     >
-      <Image
-        src={'/assets/images/dummy-book-cover.png'}
-        width={190}
-        height={250}
-        alt=""
-        className="w-full h-auto rounded-md"
+      <img
+        src={data.coverImgUrl}
+        // width="190"
+        // height="250"
+        // alt={data.title}
+        className="w-full h-auto rounded-md aspect-[9/14]"
+        onError={(e) =>
+          (e.currentTarget.src = '/assets/images/dummy-book-cover.png')
+        }
       />
       <h2 className="mt-4 text-2xl font-semibold">{data.title}</h2>
       <div className="flex mt-4 author-wrapper">
