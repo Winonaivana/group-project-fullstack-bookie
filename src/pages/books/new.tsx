@@ -94,15 +94,16 @@ const NewBookPage = ({ feed, post }: INewBookPageProps) => {
   return (
     <>
       <NavBar data={feed} />
-      <main></main>
-      <BookForm
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-        errors={errors}
-        register={register}
-        data={post}
-        type="create"
-      />
+      <main>
+        <BookForm
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          errors={errors}
+          register={register}
+          data={post}
+          type="create"
+        />
+      </main>
     </>
   );
 };
