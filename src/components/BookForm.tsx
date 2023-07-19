@@ -55,7 +55,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('title')}
         className="input-primary"
       />
-      {props.errors?.title && <span>{props.errors.title.message}</span>}
+      {props.errors?.title && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.title.message}
+        </span>
+      )}
 
       {/* Writer Input */}
       <label htmlFor="writer-input" className="mt-5 ">
@@ -68,7 +72,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('writer')}
         className="input-primary"
       />
-      {props.errors?.writer && <span>{props.errors.writer.message}</span>}
+      {props.errors?.writer && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.writer.message}
+        </span>
+      )}
 
       {/* Genres Input */}
       <label htmlFor="genres-input" className="mt-5">
@@ -81,7 +89,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('genres')}
         className="input-primary"
       />
-      {props.errors?.genres && <span>{props.errors.genres.message}</span>}
+      {props.errors?.genres && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.genres.message}
+        </span>
+      )}
 
       {/* Cover Image Url Input */}
       <label htmlFor="cover-img-url-input" className="mt-5">
@@ -95,7 +107,9 @@ const BookForm = (props: IBookFormProps) => {
         className="input-primary"
       />
       {props.errors?.coverImgUrl && (
-        <span>{props.errors.coverImgUrl.message}</span>
+        <span className="text-[10px] text-red-500">
+          {props.errors.coverImgUrl.message}
+        </span>
       )}
 
       {/* isDone Input */}
@@ -121,7 +135,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('notes')}
         className="h-40 input-primary"
       />
-      {props.errors?.notes && <span>{props.errors.notes.message}</span>}
+      {props.errors?.notes && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.notes.message}
+        </span>
+      )}
 
       <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 min-w-full mt-5 focus:ring-4 focus:ring-blue-600  hover:bg-emerald-700">
         {isEdit ? 'Save' : 'Create'}
