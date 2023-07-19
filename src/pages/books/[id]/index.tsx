@@ -86,7 +86,7 @@ const Book = ({ book, books }: BookProp) => {
         <title>Book Detail| Bookie</title>
       </Head>
       <NavBar data={books}></NavBar>
-      <div className="mt-8 flex justify-center items-center">
+      <div className="flex items-center justify-center mt-8">
         <div>
           <div className="flex left-items-wrapper">
             <Image
@@ -97,7 +97,7 @@ const Book = ({ book, books }: BookProp) => {
             />
             <h1 className="text-[32px] font-medium ml-3 ">Book Details</h1>
           </div>
-          <div className="max-sm:max-w-xs max-sm:justify-center max-sm:items-center  mt-11 gap-6  max-w-2xl  flex max-sm:flex-col ">
+          <div className="flex max-w-2xl gap-6 ph:max-w-xs ph:justify-center ph:items-center mt-11 ph:flex-col ">
             <div className="">
               <div className="min-w-[200px]">
                 <img
@@ -115,9 +115,9 @@ const Book = ({ book, books }: BookProp) => {
               </div>
             </div>
 
-            <div className="max-sm:mb-12  ">
+            <div className="ph:mb-12 ">
               <div>
-                <h1 className="mt-4 sm:mt-0 text-4xl font-semibold">
+                <h1 className="mt-4 text-4xl font-semibold sm:mt-0">
                   {book.title}
                 </h1>
 
@@ -152,12 +152,12 @@ const Book = ({ book, books }: BookProp) => {
                         alt="done icon"
                         className="mr-2"
                       />
-                      <p className="text-sky-600 text-sm">In Progress</p>
+                      <p className="text-sm text-sky-600">In Progress</p>
                     </div>
                   )}
                 </div>
-                <div className="px-3 py-1 mt-2 rounded-md bg-gray-300 max-w-fit">
-                  <p className="text-gray-700 text-sm">{book.genres}</p>
+                <div className="px-3 py-1 mt-2 bg-gray-300 rounded-md max-w-fit">
+                  <p className="text-sm text-gray-700">{book.genres}</p>
                 </div>
                 <div className="mt-2">
                   <p>{book.notes}</p>
