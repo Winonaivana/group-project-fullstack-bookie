@@ -6,3 +6,9 @@ body {
   color: rgba(17, 24, 39, 1);
   background-color: rgba(243, 244, 246, 1);
 }
+
+@layer components {
+  .input-primary {
+    @apply min-w-full px-4 py-2 mt-1 rounded-md placeholder:text-[#d2d2d2] border border-[#E2E1E5];
+  }
+}

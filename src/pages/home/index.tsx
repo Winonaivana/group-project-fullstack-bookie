@@ -5,6 +5,12 @@ import BookCard from '@/components/BookCard';
 import { prisma } from '@/libs/db';
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/',
+    },
+  };
   const feed = await prisma.book.findMany();
   return {
     props: { feed },
@@ -40,9 +46,12 @@ const Page = ({ feed }: IHomeProps) => {
               alt="file basket icon"
             />
             <h1 className="text-[32px] font-medium ml-3 ">My books</h1>
-            <p className="px-5 py-3 rounded-full ml-7 bg-gray-900/20">2 Done</p>
+            <p className="px-5 py-3 rounded-full ml-7 bg-gray-900/20">
+              2 Done {feed.filter((value) => value.done === true).length}
+            </p>
             <p className="px-5 py-3 ml-3 rounded-full bg-gray-900/20">
-              10 In Progress
+              10 In Progress{' '}
+              {feed.filter((value) => value.done === false).length}
             </p>
           </div>
           <button className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500">
