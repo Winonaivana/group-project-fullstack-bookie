@@ -24,7 +24,7 @@ const BookForm = (props: IBookFormProps) => {
   return (
     <form
       onSubmit={props.handleSubmit(props.onSubmit)}
-      className="flex flex-col items-start min-w-[522px]"
+      className="flex flex-col items-start min-w-[522px] ph:min-w-[342px]"
     >
       {isEdit ? (
         <div className="flex flex-row items-center ">
