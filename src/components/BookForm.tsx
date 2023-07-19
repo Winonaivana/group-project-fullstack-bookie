@@ -8,6 +8,7 @@ import {
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IFormInput } from '@/pages/books/new';
+import Link from 'next/link';
 
 interface IBookFormProps {
   handleSubmit: UseFormHandleSubmit<IFormInput, undefined>;
@@ -32,9 +33,14 @@ const BookForm = (props: IBookFormProps) => {
           <h2 className="ml-3 text-3xl">Edit Book</h2>
         </div>
       ) : (
-        <div className="flex flex-row items-center ">
-          <img src="/assets/icon/add-book-icon.svg" alt="add book icon" />
-          <h2 className="ml-3 text-3xl">Create New Book</h2>
+        <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex flex-row items-center">
+            <img src="/assets/icon/add-book-icon.svg" alt="add book icon" />
+            <h2 className="ml-3 text-3xl">Create New Book</h2>
+          </div>
+          <Link href="/" className="text-[12px] text-red-500">
+            Cancel
+          </Link>
         </div>
       )}
 
