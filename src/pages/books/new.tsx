@@ -11,6 +11,7 @@ import { authOptions } from '../api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext,
@@ -40,16 +41,19 @@ export const getServerSideProps: GetServerSideProps = async (
   };
 };
 // refactoring preparation, when use this type of code, remove <IFormInput> from useForm, and add the schema as usual with hookform. this code move the validation of type into the yup object scheme, so it will be easier to  write the error message.
-// const schema:yup.ObjectSchema<IFormInput> = yup.object().shape({
-//   title: yup.string().required('Please fill in the book title'),
-//   writer: yup.string().required('Please fill in the writter'),
-//   genres: yup.string().required('Please specified the genre'),
-//   coverImgUrl: yup.string().required('Please find an image for the cover'),
-//   done: yup.boolean(),
-//   notes: yup
-//     .string()
-//     .required('Please tell us about your first impression about this book'),
-// }).required();
+const schema: yup.ObjectSchema<IFormInput> = yup
+  .object({
+    title: yup.string().required('Please fill in the book title'),
+    writer: yup.string().required('Please fill in the writter'),
+    genres: yup.string().required('Please specified the genre'),
+    coverImgUrl: yup.string().required('Please find an image for the cover'),
+    done: yup.boolean(),
+    notes: yup
+      .string()
+      .required('Please tell us about your first impression about this book'),
+    userId: yup.string(),
+  })
+  .required();
 
 export interface IFormInput {
   title: string;
@@ -73,7 +77,8 @@ const NewBookPage = ({ feed, post }: INewBookPageProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ mode: 'onTouched' });
+  } = useForm({ resolver: yupResolver(schema), mode: 'onTouched' });
+  // } = useForm<IFormInput>({ mode: 'onTouched' });
 
   const onSubmit: SubmitHandler<IFormInput> = async (formData) => {
     try {
