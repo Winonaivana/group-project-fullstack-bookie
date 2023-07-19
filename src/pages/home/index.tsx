@@ -5,6 +5,12 @@ import BookCard from '@/components/BookCard';
 import { prisma } from '@/libs/db';
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    redirect: {
+      permanent: false,
+      destination: '/',
+    },
+  };
   const feed = await prisma.book.findMany();
   return {
     props: { feed },
