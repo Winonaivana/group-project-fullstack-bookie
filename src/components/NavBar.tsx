@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import { IFeed } from '@/pages/home';
+import { signOut } from 'next-auth/react';
 
 interface IProps {
   data: IFeed[];
@@ -21,7 +22,10 @@ const NavBar = ({ data }: IProps) => {
           />
         </Link>
         <SearchBar data={data} />
-        <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6">
+        <button
+          onClick={() => signOut()}
+          className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6"
+        >
           Sign out
         </button>
       </div>
