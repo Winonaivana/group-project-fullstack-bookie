@@ -97,7 +97,7 @@ const NewBookPage = ({ feed, post }: INewBookPageProps) => {
   return (
     <>
       <NavBar data={feed} />
-      <main>
+      <main className="flex flex-col items-center mt-20">
         <BookForm
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}

@@ -22,70 +22,104 @@ const BookForm = (props: IBookFormProps) => {
   const isEdit = props.type === 'edit';
 
   return (
-    <form onSubmit={props.handleSubmit(props.onSubmit)}>
+    <form
+      onSubmit={props.handleSubmit(props.onSubmit)}
+      className="flex flex-col items-start min-w-[522px]"
+    >
+      {isEdit ? (
+        <div className="flex flex-row items-center ">
+          <img src="/assets/icon/edit-book-icon.svg" alt="edit book icon" />
+          <h2 className="ml-3 text-3xl">Edit Book</h2>
+        </div>
+      ) : (
+        <div className="flex flex-row items-center ">
+          <img src="/assets/icon/add-book-icon.svg" alt="add book icon" />
+          <h2 className="ml-3 text-3xl">Create New Book</h2>
+        </div>
+      )}
+
       {/* Title Input */}
-      <label htmlFor="title-input">Title</label>
+      <label htmlFor="title-input" className="mt-10 ">
+        Title
+      </label>
       <input
         id="title-input"
         placeholder="Title"
         defaultValue={isEdit ? props.data.title : ''}
         {...props.register('title')}
+        className="input-primary"
       />
       {props.errors?.title && <span>{props.errors.title.message}</span>}
 
       {/* Writer Input */}
-      <label htmlFor="writer-input">Writer</label>
+      <label htmlFor="writer-input" className="mt-5 ">
+        Writer
+      </label>
       <input
         id="writer-input"
         placeholder="Writer"
         defaultValue={isEdit ? props.data.writer : ''}
         {...props.register('writer')}
+        className="input-primary"
       />
       {props.errors?.writer && <span>{props.errors.writer.message}</span>}
 
       {/* Genres Input */}
-      <label htmlFor="genres-input">Genres</label>
+      <label htmlFor="genres-input" className="mt-5">
+        Genres
+      </label>
       <input
         id="genres-input"
         placeholder="Genres"
         defaultValue={isEdit ? props.data.genres : ''}
         {...props.register('genres')}
+        className="input-primary"
       />
       {props.errors?.genres && <span>{props.errors.genres.message}</span>}
 
       {/* Cover Image Url Input */}
-      <label htmlFor="cover-img-url-input">Cover Image Url</label>
+      <label htmlFor="cover-img-url-input" className="mt-5">
+        Cover Image Url
+      </label>
       <input
         id="cover-img-url-input"
         placeholder="https://example.com/image.webp"
         defaultValue={isEdit ? props.data.coverImgUrl : ''}
         {...props.register('coverImgUrl')}
+        className="input-primary"
       />
       {props.errors?.coverImgUrl && (
         <span>{props.errors.coverImgUrl.message}</span>
       )}
 
       {/* isDone Input */}
-      <input
-        id="is-done-input"
-        type="checkbox"
-        defaultChecked={isEdit ? props.data.done : false}
-        {...props.register('done')}
-      />
-      <label htmlFor="is-done-input">Done Reading</label>
-      {props.errors?.done && <span>{props.errors.done.message}</span>}
+      <div className="flex flex-row mt-5">
+        <input
+          id="is-done-input"
+          type="checkbox"
+          defaultChecked={isEdit ? props.data.done : false}
+          {...props.register('done')}
+        />
+        <label htmlFor="is-done-input" className="ml-3">
+          Done Reading
+        </label>
+      </div>
 
       {/* Notes Input */}
-      <label htmlFor="notes-input">Notes</label>
-      <input
+      <label htmlFor="notes-input" className="mt-5">
+        Notes
+      </label>
+      <textarea
         id="notes-input"
-        type="text-box"
         defaultValue={isEdit ? props.data.notes : ''}
         {...props.register('notes')}
+        className="h-40 input-primary"
       />
       {props.errors?.notes && <span>{props.errors.notes.message}</span>}
 
-      <button>{isEdit ? 'Save' : 'Create'}</button>
+      <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 min-w-full mt-5">
+        {isEdit ? 'Save' : 'Create'}
+      </button>
     </form>
   );
 };
