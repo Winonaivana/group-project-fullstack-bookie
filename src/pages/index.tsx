@@ -72,10 +72,10 @@ const Home = ({ feed }: IHomeProps) => {
               </h1>
             </div>
             <div className="flex items-center book-status-wrapper ph:mt-3">
-              <p className="px-5 py-3 rounded-full bg-gray-900/20 ml-7 ph:ml-0 ph:py-1 ph:text-xs">
+              <p className="px-5 py-3 rounded-full ml-7 bg-emerald-500/20 border-emerald-500 text-emerald-500 ph:ml-0 ph:py-1 ph:text-xs">
                 {feed.filter((value) => value.done === true).length} Done
               </p>
-              <p className="px-5 py-3 ml-3 rounded-full bg-gray-900/20 ph:py-1 ph:text-xs">
+              <p className="px-5 py-3 ml-3 rounded-full border-sky-600/20 text-sky-600 bg-sky-600/20 ph:py-1 ph:text-xs">
                 {feed.filter((value) => value.done === false).length} In
                 Progress
               </p>
