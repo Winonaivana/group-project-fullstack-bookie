@@ -123,7 +123,7 @@ const BookForm = (props: IBookFormProps) => {
       />
       {props.errors?.notes && <span>{props.errors.notes.message}</span>}
 
-      <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 min-w-full mt-5">
+      <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 min-w-full mt-5 focus:ring-4 focus:ring-blue-600  hover:bg-emerald-700">
         {isEdit ? 'Save' : 'Create'}
       </button>
     </form>
