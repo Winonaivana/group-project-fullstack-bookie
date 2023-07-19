@@ -83,7 +83,7 @@ const Home = ({ feed }: IHomeProps) => {
           </div>
           <Link
             href="/books/new"
-            className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500 ph:h-[36px]  ph:py-1"
+            className="px-5 py-3 border rounded-full border-emerald-500 bg-emerald-500/20 text-emerald-500 ph:h-[36px] hover:scale-105 transition-all duration-300 ph:py-1"
           >
             + Add
           </Link>
