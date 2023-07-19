@@ -119,7 +119,7 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
   return (
     <>
       <Head>
-        <title>Edit Contact | Qontax</title>
+        <title>Edit Book | Bookie</title>
       </Head>
       <NavBar data={feed} />
       <section className={`${inter.className} py-8`}>

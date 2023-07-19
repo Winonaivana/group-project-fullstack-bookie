@@ -9,6 +9,7 @@ import axios from 'axios';
 
 import { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -81,6 +82,9 @@ const Book = ({ book, books }: BookProp) => {
   };
   return (
     <>
+      <Head>
+        <title>Book Detail| Bookie</title>
+      </Head>
       <NavBar data={books}></NavBar>
       <div className="mt-8 flex justify-center items-center">
         <div>

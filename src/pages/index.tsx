@@ -7,6 +7,7 @@ import { prisma } from '@/libs/db';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -52,6 +53,9 @@ interface IHomeProps {
 const Home = ({ feed }: IHomeProps) => {
   return (
     <>
+      <Head>
+        <title>Home | Bookie</title>
+      </Head>
       <NavBar data={feed} />
       <main className="flex flex-col items-center">
         <div className="container flex justify-between px-14 mt-14 row-1-wrapper ph:px-6">

@@ -10,6 +10,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext,
@@ -96,6 +97,9 @@ const NewBookPage = ({ feed, post }: INewBookPageProps) => {
   };
   return (
     <>
+      <Head>
+        <title>Create Book | Bookie</title>
+      </Head>
       <NavBar data={feed} />
       <main className="flex flex-col items-center mt-20">
         <BookForm
