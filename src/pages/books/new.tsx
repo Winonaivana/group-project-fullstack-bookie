@@ -26,7 +26,11 @@ export const getServerSideProps: GetServerSideProps = async (
       },
     };
   }
-  const feed = await prisma.book.findMany();
+  const feed = await prisma.book.findMany({
+    where: {
+      userId: session.user.id,
+    },
+  });
   const post = {
     id: '',
     title: '',
