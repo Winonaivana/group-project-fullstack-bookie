@@ -20,7 +20,6 @@ interface IBookFormProps {
 
 const BookForm = (props: IBookFormProps) => {
   const isEdit = props.type === 'edit';
-  console.log(isEdit, 'isEdit');
 
   return (
     <form onSubmit={props.handleSubmit(props.onSubmit)}>
