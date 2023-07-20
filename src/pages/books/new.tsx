@@ -51,11 +51,11 @@ const schema: yup.ObjectSchema<IFormInput> = yup
     writer: yup.string().required('Please fill in the writter'),
     genres: yup.string().required('Please specified the genre'),
     coverImgUrl: yup.string().required('Please find an image for the cover'),
-    done: yup.boolean(),
+    done: yup.boolean().required(),
     notes: yup
       .string()
       .required('Please tell us about your first impression about this book'),
-    userId: yup.string(),
+    // userId: yup.string(),
   })
   .required();
 
@@ -65,7 +65,7 @@ export interface IFormInput {
   genres: string;
   coverImgUrl: string;
   notes: string;
-  userId: string;
+  // userId: string;
   done: boolean;
 }
 
