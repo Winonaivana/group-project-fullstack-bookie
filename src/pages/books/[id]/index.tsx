@@ -103,7 +103,11 @@ const Book = ({ book, books }: BookProp) => {
                 <img
                   className="w-[200px] h-[300px] rounded-md"
                   src={book.coverImgUrl}
-                  alt=""
+                  // alt=""
+                  onError={(e) =>
+                    (e.currentTarget.src =
+                      '/assets/images/dummy-book-cover.png')
+                  }
                 ></img>
               </div>
               <div className="flex gap-4 sm:justify-center">
