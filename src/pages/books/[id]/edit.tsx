@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { prisma } from '@/libs/db';
 import { Book } from '@prisma/client';
 import NavBar from '@/components/NavBar';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] });
@@ -123,28 +124,36 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
       </Head>
       <NavBar data={feed} />
       <section className={`${inter.className} py-8`}>
-        <div className="relative max-w-screen-xl mx-auto px-8 py-6 ">
+        <div className="relative max-w-screen-xl px-8 py-6 mx-auto ">
           <div className="max-w-lg mx-auto space-y-10">
-            <div className="w-fit text-gray-00 flex gap-3 items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-10 h-10"
+            <div className="flex items-center justify-between w-full gap-3 text-gray-00">
+              <div className="flex flex-row">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-10 h-10"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                  />
+                </svg>
+                <h1
+                  className={`${jakarta.className} text-2xl sm:text-4xl font-bold`}
+                >
+                  Edit Book
+                </h1>
+              </div>
+              <Link
+                href={`/books/${data.id}`}
+                className="text-[12px] text-red-500"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                />
-              </svg>
-              <h1
-                className={`${jakarta.className} text-2xl sm:text-4xl font-bold`}
-              >
-                Edit Book
-              </h1>
+                Cancel
+              </Link>
             </div>
 
             {showError && (
@@ -181,12 +190,12 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
                   <div className="flex items-center justify-between mb-2">
                     <label
                       htmlFor="title"
-                      className="block  text-sm font-medium text-gray-800"
+                      className="block text-sm font-medium text-gray-800"
                     >
                       Title
                     </label>
                     {errors.title?.type === 'required' && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         *Field required
                       </span>
                     )}
@@ -203,12 +212,12 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
                   <div className="flex items-center justify-between mb-2">
                     <label
                       htmlFor="writer"
-                      className="block  text-sm font-medium  text-gray-800"
+                      className="block text-sm font-medium text-gray-800"
                     >
                       Writer
                     </label>
                     {errors.writer?.type === 'required' && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         *Field required
                       </span>
                     )}
@@ -226,12 +235,12 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
                   <div className="flex items-center justify-between mb-2">
                     <label
                       htmlFor="genres"
-                      className="block  text-sm font-medium  text-gray-800"
+                      className="block text-sm font-medium text-gray-800"
                     >
                       Genres
                     </label>
                     {errors.genres?.type === 'required' && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         *Field required
                       </span>
                     )}
@@ -249,12 +258,12 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
                   <div className="flex items-center justify-between mb-2">
                     <label
                       htmlFor="coverImgUrl"
-                      className="block  text-sm font-medium  text-gray-800"
+                      className="block text-sm font-medium text-gray-800"
                     >
                       Cover Image URL
                     </label>
                     {errors.coverImgUrl && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         *Enter valid URL
                       </span>
                     )}
@@ -294,12 +303,12 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
                   <div className="flex items-center justify-between mb-2">
                     <label
                       htmlFor="notes"
-                      className="block text-sm font-medium  text-gray-800"
+                      className="block text-sm font-medium text-gray-800"
                     >
                       Notes
                     </label>
                     {errors.notes?.type === 'required' && (
-                      <span className="text-red-500 text-xs">
+                      <span className="text-xs text-red-500">
                         *Field required
                       </span>
                     )}
@@ -322,7 +331,7 @@ function NewBook({ feed, data }: { feed: Book[]; data: Book }) {
                   <svg
                     aria-hidden="true"
                     role="status"
-                    className="inline w-6 h-6 animate-spin text-gray-800"
+                    className="inline w-6 h-6 text-gray-800 animate-spin"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

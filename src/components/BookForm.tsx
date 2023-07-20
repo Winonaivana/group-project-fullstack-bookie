@@ -8,6 +8,7 @@ import {
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IFormInput } from '@/pages/books/new';
+import Link from 'next/link';
 
 interface IBookFormProps {
   handleSubmit: UseFormHandleSubmit<IFormInput, undefined>;
@@ -32,9 +33,14 @@ const BookForm = (props: IBookFormProps) => {
           <h2 className="ml-3 text-3xl">Edit Book</h2>
         </div>
       ) : (
-        <div className="flex flex-row items-center ">
-          <img src="/assets/icon/add-book-icon.svg" alt="add book icon" />
-          <h2 className="ml-3 text-3xl">Create New Book</h2>
+        <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex flex-row items-center">
+            <img src="/assets/icon/add-book-icon.svg" alt="add book icon" />
+            <h2 className="ml-3 text-3xl">Create New Book</h2>
+          </div>
+          <Link href="/" className="text-[12px] text-red-500">
+            Cancel
+          </Link>
         </div>
       )}
 
@@ -49,7 +55,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('title')}
         className="input-primary"
       />
-      {props.errors?.title && <span>{props.errors.title.message}</span>}
+      {props.errors?.title && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.title.message}
+        </span>
+      )}
 
       {/* Writer Input */}
       <label htmlFor="writer-input" className="mt-5 ">
@@ -62,7 +72,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('writer')}
         className="input-primary"
       />
-      {props.errors?.writer && <span>{props.errors.writer.message}</span>}
+      {props.errors?.writer && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.writer.message}
+        </span>
+      )}
 
       {/* Genres Input */}
       <label htmlFor="genres-input" className="mt-5">
@@ -75,7 +89,11 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('genres')}
         className="input-primary"
       />
-      {props.errors?.genres && <span>{props.errors.genres.message}</span>}
+      {props.errors?.genres && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.genres.message}
+        </span>
+      )}
 
       {/* Cover Image Url Input */}
       <label htmlFor="cover-img-url-input" className="mt-5">
@@ -89,7 +107,9 @@ const BookForm = (props: IBookFormProps) => {
         className="input-primary"
       />
       {props.errors?.coverImgUrl && (
-        <span>{props.errors.coverImgUrl.message}</span>
+        <span className="text-[10px] text-red-500">
+          {props.errors.coverImgUrl.message}
+        </span>
       )}
 
       {/* isDone Input */}
@@ -115,9 +135,13 @@ const BookForm = (props: IBookFormProps) => {
         {...props.register('notes')}
         className="h-40 input-primary"
       />
-      {props.errors?.notes && <span>{props.errors.notes.message}</span>}
+      {props.errors?.notes && (
+        <span className="text-[10px] text-red-500">
+          {props.errors.notes.message}
+        </span>
+      )}
 
-      <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 min-w-full mt-5">
+      <button className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 min-w-full mt-5 focus:ring-4 focus:ring-blue-600  hover:bg-emerald-700">
         {isEdit ? 'Save' : 'Create'}
       </button>
     </form>

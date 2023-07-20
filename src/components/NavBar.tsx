@@ -27,7 +27,7 @@ const NavBar = ({ data }: IProps) => {
           </div>
           <button
             onClick={() => signOut()}
-            className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6"
+            className="font-semibold text-[#f1f1f1] rounded-lg bg-emerald-500 py-3 px-6 focus:ring-4 focus:ring-blue-600  hover:bg-emerald-700"
           >
             Sign out
           </button>
