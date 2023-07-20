@@ -164,7 +164,7 @@ const Book = ({ book, books }: BookProp) => {
                   <p className="text-sm text-gray-700">{book.genres}</p>
                 </div>
                 <div className="mt-2">
-                  <p>{book.notes}</p>
+                  <p className="whitespace-pre-line">{book.notes}</p>
                 </div>
               </div>
             </div>
